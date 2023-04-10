@@ -28,8 +28,42 @@ const getGoals = async () => {
     }
 }
 
+const UpdateGoals = async ( params) => {
+    const GoalsDataUpdate = await Goals.updateMany( 
+        {   canchas : params.canchas , 
+            parques : params.parques ,
+            c_integral : params.c_integral , 
+            c_educativos : params.c_educativos
+        }
+         )
+        .then((GoalsDataUpdate) => {
+            if (!GoalsDataUpdate){
+                return {
+                    code: 404,
+                    error: 'Error, no existe ningun logro para actualizar'
+                }
+            }
+            return GoalsDataUpdate;
+        })
+        .catch((err) => {
+            return {
+                code: 500,
+                error: err.message
+            }
+        })
+    if (GoalsDataUpdate.error) {
+        return {
+            code: GoalsDataUpdate.code,
+            error: GoalsDataUpdate.error
+        }
+    }
+    return {
+        GoalsDataUpdate: GoalsDataUpdate
+    }
+}
 
 export default {
     getGoals,
+    UpdateGoals
     
 }
