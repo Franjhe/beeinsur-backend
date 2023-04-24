@@ -1,4 +1,8 @@
 import newsService from '../services/newsService.js';
+import multer from 'multer';
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage });
 
 const getNews = async (req, res) => {
     const News = await newsService.getNews();
@@ -17,24 +21,42 @@ const getNews = async (req, res) => {
         });
 };
 
-const postImage = async (req, res) => {
-    const ImagePost = await newsService.Image(req.file.path,res.locals.decodedJWT.user);
-    if (ImagePost.error) {
+const CreateNews = async (req, res) => {
+    const News = await newsService.CreateNews(req.body);
+    if (News.error) {
         return res
-            .status(ImagePost.code)
+            .status(News.code)
             .send({
-                message: ImagePost.error
+                message: News.error
             });
     }
     return res
         .status(200)
         .send({
             status: true,
-            healthData: ImagePost.healthData,
+            News: News,
+        });
+};
+
+const UpdateNews = async (req, res) => {
+    const News = await newsService.UpdateNews(req.body, req.file.buffer);
+    if (News.error) {
+        return res
+            .status(News.code)
+            .send({
+                message: News.error
+            });
+    }
+    return res
+        .status(200)
+        .send({
+            status: true,
+            News: News,
         });
 };
 
 export default {
     getNews,
-    postImage
+    CreateNews,
+    UpdateNews
 }

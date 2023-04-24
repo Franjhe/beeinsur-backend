@@ -7,9 +7,8 @@ const router = express.Router();
 router
     .get    ("/news"           , NewsData.getNews)
     .get    ("/news:id"        , authenticate, NewsData.getNews)
-    .post   ("/news"           , authenticate, NewsData.getNews)
-    .post   ("/uploadphoto"    , authenticate, NewsData.postImage)
-    .put    ("/news:id"        , authenticate, NewsData.getNews)
+    .post   ("/news"           , authenticate, NewsData.CreateNews)
+    .put    ("/news:id"        , authenticate, NewsData.UpdateNews)
     .delete ("/news:id"        , authenticate, NewsData.getNews)
 
 export default router;

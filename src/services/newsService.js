@@ -28,21 +28,61 @@ const getNews = async () => {
     }
 }
 
-const Image = async (myImage) => {
-    var encode_img = img.toString('base64');
-    var final_img = {
-        contentType:req.file.mimetype,
-        image:new Buffer(encode_img,'base64')
-    };
-    const ImageData = await News.create({ final_img })
-        .then((ImageData) => {
-            if (!ImageData){
+const CreateNews = async ( params) => {
+    const NewsDataCreate = await News.create( 
+        {  
+            date : params.date ,
+            content : params.content , 
+            tittle : params.tittle,
+            image : params.image , 
+        }
+         )
+        .then((NewsDataCreate) => {
+            if (!NewsDataCreate){
                 return {
                     code: 404,
-                    error: 'Error, no existe ninguna noticia para mostrar'
+                    error: 'Error en crear una noticia'
                 }
             }
-            return ImageData;
+            return NewsDataCreate;
+        })
+        .catch((err) => {
+            console.log(err.message)
+            return {
+                code: 500,
+                error: err.message
+            }
+        })
+    if (NewsDataCreate.error) {
+        return {
+            code: NewsDataCreate.code,
+            error: NewsDataCreate.error
+        }
+    }
+    return {
+        NewsDataCreate: NewsDataCreate
+    }
+}
+
+const UpdateNews = async ( params) => {
+    
+    const NewsDataUpdate = await News.updateMany( 
+        {  
+            _id : params.id_news , 
+            date : params.date ,
+            content : params.content , 
+            tittle : params.tittle,
+            image : params.image , 
+        }
+         )
+        .then((NewsDataUpdate) => {
+            if (!NewsDataUpdate){
+                return {
+                    code: 404,
+                    error: 'Error, no existe ninguna noticia para actualizar'
+                }
+            }
+            return NewsDataUpdate;
         })
         .catch((err) => {
             return {
@@ -50,19 +90,19 @@ const Image = async (myImage) => {
                 error: err.message
             }
         })
-    if (ImageData.error) {
+    if (NewsDataUpdate.error) {
         return {
-            code: ImageData.code,
-            error: ImageData.error
+            code: NewsDataUpdate.code,
+            error: NewsDataUpdate.error
         }
     }
     return {
-        ImageData: ImageData
+        NewsDataUpdate: NewsDataUpdate
     }
 }
 
 export default {
     getNews,
-    Image
-    
+    CreateNews,
+    UpdateNews   
 }

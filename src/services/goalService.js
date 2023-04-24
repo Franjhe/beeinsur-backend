@@ -65,5 +65,4 @@ const UpdateGoals = async ( params) => {
 export default {
     getGoals,
     UpdateGoals
-    
 }

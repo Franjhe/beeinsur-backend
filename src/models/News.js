@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const NewsSchema = new Schema({
+    date: {
+        type: String,
+    },
     tittle: {
         type: String,
     },
@@ -10,12 +13,9 @@ const NewsSchema = new Schema({
     },
     image: 
     {
-        data: Buffer,
-        contentType: String
+        type: Buffer,
     },
-    id_news: {
-        type: String,
-    },
+
     author: {
         type: String,
     },
