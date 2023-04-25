@@ -68,7 +68,7 @@ const UpdateNews = async ( params) => {
     
     const NewsDataUpdate = await News.updateMany( 
         {  
-            _id : params.id_news , 
+            _id : params._id , 
             date : params.date ,
             content : params.content , 
             tittle : params.tittle,
