@@ -2,6 +2,7 @@ import authService from '../services/authService.js';
 
 const signIn = async (req, res) => {
     const verifyLoginCredentials = await authService.verifyLoginCredentials(req.body.user, req.body.password);
+
     if (verifyLoginCredentials.error) {
         return res
             .status(verifyLoginCredentials.code)

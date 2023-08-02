@@ -1,4 +1,4 @@
-import Goals from '../models/Goals.js'
+import Goals from '../db/Goals.js'
 
 const getGoals = async () => {
     const GoalsData = await Goals.find()

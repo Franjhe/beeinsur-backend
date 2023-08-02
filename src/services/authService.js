@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
-import User from '../models/user.js';
+import User from '../db/user.js';
 
 const createJWT = (user) => {
     const payload = {
@@ -12,18 +12,26 @@ const createJWT = (user) => {
     return jwt.sign(payload, process.env.JWT_SECRET)
 }
 
-const verifyLoginCredentials = async (user, password) => {
-    const users = await User.findOne({ user: user, password: password })
+const verifyLoginCredentials =  async ( params) => {
+    console.log(params)
+    const users = await User.search( 
+        {  
+            user : params.user ,
+            password : params.password , 
+
+        }
+         )
         .then((users) => {
             if (!users){
                 return {
                     code: 404,
-                    error: 'Error de autenticación, su email o su clave no coinciden.'
+                    error: 'Error al verificar un usuario'
                 }
             }
             return users;
         })
         .catch((err) => {
+            console.log(err.message)
             return {
                 code: 500,
                 error: err.message
@@ -35,7 +43,9 @@ const verifyLoginCredentials = async (user, password) => {
             error: users.error
         }
     }
+
     return {
+
         userData: users.toJSON()
     }
 }

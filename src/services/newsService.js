@@ -1,4 +1,4 @@
-import News from '../models/News.js'
+import News from '../db/News.js'
 
 const getNews = async () => {
     const NewsData = await News.find()
@@ -31,10 +31,10 @@ const getNews = async () => {
 const CreateNews = async ( params) => {
     const NewsDataCreate = await News.create( 
         {  
-            date : params.date ,
-            content : params.content , 
-            tittle : params.tittle,
-            image : params.image , 
+            fecha : params.fecha ,
+            contenido : params.contenido , 
+            imagen : params.imagen,
+            titulo : params.titulo , 
         }
          )
         .then((NewsDataCreate) => {
