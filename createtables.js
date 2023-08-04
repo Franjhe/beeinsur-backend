@@ -64,7 +64,7 @@ function model(sequelize) {
         }
     };
 
-    return sequelize.define('Galery', attributes, options);
+    return sequelize.define('Gallery', attributes, options);
 }
 
 // usuario
