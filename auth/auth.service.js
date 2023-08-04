@@ -8,6 +8,7 @@ module.exports = {
 
 };
 async function SignUp(params) {
+    
 
     const hashedPassword = hashPassword(params.password.trim());
 
@@ -34,39 +35,47 @@ async function SignUp(params) {
 
 async function SignIn(params) {
 
-    User.findByEmail(params.email.trim(), (err, data) => {
-        if (err) {
-            if (err.kind === "not_found") {
-                res.status(404).send({
-                    status: 'error',
-                    message: `User with email ${email} was not found`
-                });
-                return;
-            }
-            res.status(500).send({
-                status: 'error',
-                message: err.message
-            });
-            return;
+    console.log(params)
+    if (await db.User.findOne({ where: { email: params.email } })) {
+          
+        if (await db.User.findOne({ where: { email: params.email } })) {
+            throw 'Email "' + params.email + '" is already registered';
         }
-        if (data) {
-            if (comparePassword(params.password.trim(), data.password)) {
-                const token = generateToken(data.id);
-                res.status(200).send({
-                    status: 'success',
-                    data: {
-                        token,
-                        firstname: data.firstname,
-                        lastname: data.lastname,
-                        email: data.email
-                    }
-                });
-                return;
-            }
-            res.status(401).send({
-                status: 'error',
-                message: 'Incorrect password'
-            });
-        }
-    });
+    }
+
+    // User.findByEmail(params.email.trim(), (err, data) => {
+    //     if (err) {
+    //         if (err.kind === "not_found") {
+    //             res.status(404).send({
+    //                 status: 'error',
+    //                 message: `User with email ${email} was not found`
+    //             });
+    //             return;
+    //         }
+    //         res.status(500).send({
+    //             status: 'error',
+    //             message: err.message
+    //         });
+    //         return;
+    //     }
+    //     if (data) {
+    //         if (bcrypt.compare(params.password.trim(), data.password)) {
+    //             const token = generateToken(data.id);
+    //             res.status(200).send({
+    //                 status: 'success',
+    //                 data: {
+    //                     token,
+    //                     firstname: data.firstname,
+    //                     lastname: data.lastname,
+    //                     email: data.email
+    //                 }
+    //             });
+    //             return;
+    //         }
+    //         res.status(401).send({
+    //             status: 'error',
+    //             message: 'Incorrect password'
+    //         });
+    //     }
+    // });
 }
