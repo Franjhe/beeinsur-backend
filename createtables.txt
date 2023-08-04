@@ -1,3 +1,7 @@
+//user
+development2023*
+
+
 
 // Noticias
 function model(sequelize) {
