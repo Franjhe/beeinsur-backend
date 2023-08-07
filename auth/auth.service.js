@@ -1,6 +1,7 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('./../utils/password');
 const db = require('_helpers/db');
 const User = require('../users/user.model');
+const jwt = require('./../utils/token');
 
 module.exports = {
     SignUp,
@@ -35,47 +36,42 @@ async function SignUp(params) {
 
 async function SignIn(params) {
 
-    console.log(params)
-    if (await db.User.findOne({ where: { email: params.email } })) {
-          
-        if (await db.User.findOne({ where: { email: params.email } })) {
-            throw 'Email "' + params.email + '" is already registered';
-        }
-    }
+    const user = await db.User.findOne(
+            { where : 
+                {email : params.email }
+            }
+        );
+    if(user){
+        const password = await db.User.scope('withHash').findOne(
+            { where: 
+                { id: user.dataValues.id } 
+            }
+            );
 
-    // User.findByEmail(params.email.trim(), (err, data) => {
-    //     if (err) {
-    //         if (err.kind === "not_found") {
-    //             res.status(404).send({
-    //                 status: 'error',
-    //                 message: `User with email ${email} was not found`
-    //             });
-    //             return;
-    //         }
-    //         res.status(500).send({
-    //             status: 'error',
-    //             message: err.message
-    //         });
-    //         return;
-    //     }
-    //     if (data) {
-    //         if (bcrypt.compare(params.password.trim(), data.password)) {
-    //             const token = generateToken(data.id);
-    //             res.status(200).send({
-    //                 status: 'success',
-    //                 data: {
-    //                     token,
-    //                     firstname: data.firstname,
-    //                     lastname: data.lastname,
-    //                     email: data.email
-    //                 }
-    //             });
-    //             return;
-    //         }
-    //         res.status(401).send({
-    //             status: 'error',
-    //             message: 'Incorrect password'
-    //         });
-    //     }
-    // });
+       const password_valid = bcrypt.compare(params.password, password.dataValues.passwordHash);
+
+       console.log(password_valid )
+       if(password_valid)
+       {
+           token = jwt.sign({ 
+            "id" : user.id,
+            "email" : user.email,
+            "first_name":user.first_name 
+        },process.env.SECRET);
+
+           res.status(200).json(
+            { token : token }
+            );
+       } else {
+         res.status(400).json(
+            { error : "Password Incorrect" }
+            );
+       }
+     
+     }else{
+       res.status(404).json(
+        { error : "User does not exist" }
+        );
+     }
+
 }

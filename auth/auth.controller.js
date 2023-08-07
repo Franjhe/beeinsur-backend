@@ -11,7 +11,7 @@ module.exports = router;
 
 
 function SignUp(req, res, next) {
-    console.log(req.body)
+
     userService.SignUp(req.body)
         .then(user => res.json(user))
         .catch(next);
@@ -19,7 +19,6 @@ function SignUp(req, res, next) {
 
 function SignIn(req, res, next) {
     userService.SignIn(req.body)
-    console.log(req.body)
         .then(user => res.json(user))
         .catch(next);
 }

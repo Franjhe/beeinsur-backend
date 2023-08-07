@@ -1,7 +1,7 @@
 const winston = require('winston');
 const fs = require('fs');
 const path = require('path');
-require('dotenv/config');
+const config = require('./../config.json');
 
 const levels = {
     error: 0,
@@ -38,7 +38,7 @@ const logger = winston.createLogger({
     transports
 });
 
-if (process.env.NODE_ENV !== 'production') {
+if (config.database.env !== 'production') {
     logger.add(
         new winston.transports.Console({
             format: winston.format.combine(
