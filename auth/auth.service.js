@@ -1,38 +1,37 @@
-const bcrypt = require('./../utils/password');
+const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
-const User = require('../users/user.model');
-const jwt = require('./../utils/token');
+const { generate: generateToken } = require('../utils/token');
 
 module.exports = {
-    SignUp,
+    // SignUp,
     SignIn
 
 };
-async function SignUp(params) {
+// async function SignUp(params) {
     
 
-    const hashedPassword = hashPassword(params.password.trim());
+//     const hashedPassword = hashPassword(params.password.trim());
 
-    const user = new User(params.firstname.trim(), params.lastname.trim(), params.email.trim(), hashedPassword);
+//     const user = new User(params.firstname.trim(), params.lastname.trim(), params.email.trim(), hashedPassword);
 
-    User.create(user, (err, data) => {
-        if (err) {
-            res.status(500).send({
-                status: "error",
-                message: err.message
-            });
-        } else {
-            const token = generateToken(data.id);
-            res.status(201).send({
-                status: "success",
-                data: {
-                    token,
-                    data
-                }
-            });
-        }
-    });
-}
+//     User.create(user, (err, data) => {
+//         if (err) {
+//             res.status(500).send({
+//                 status: "error",
+//                 message: err.message
+//             });
+//         } else {
+//             const token = generateToken(data.id);
+//             res.status(201).send({
+//                 status: "success",
+//                 data: {
+//                     token,
+//                     data
+//                 }
+//             });
+//         }
+//     });
+// }
 
 async function SignIn(params) {
 
@@ -50,28 +49,19 @@ async function SignIn(params) {
 
        const password_valid = bcrypt.compare(params.password, password.dataValues.passwordHash);
 
-       console.log(password_valid )
        if(password_valid)
        {
-           token = jwt.sign({ 
-            "id" : user.id,
-            "email" : user.email,
-            "first_name":user.first_name 
-        },process.env.SECRET);
+    
+        const token = generateToken(user.dataValues);
 
-           res.status(200).json(
-            { token : token }
-            );
-       } else {
-         res.status(400).json(
-            { error : "Password Incorrect" }
-            );
-       }
-     
-     }else{
-       res.status(404).json(
-        { error : "User does not exist" }
-        );
-     }
+        const usuario= {
+            token:token,
+            firstname: user.dataValues.firstName,
+            lastname: user.dataValues.lastName,
+        }
+        return usuario
+   
+        }
+    }
 
 }
