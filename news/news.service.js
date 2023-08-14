@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 
 module.exports = {
@@ -29,6 +28,7 @@ async function create(params) {
     await news.save();
 }
 
+
 async function update(id, params) {
     const news = await getNews(id);
 
@@ -38,6 +38,10 @@ async function update(id, params) {
         throw 'Content "' + params.content + '" is already registered';
     }
 
+    // Actualiza la ruta de la imagen si se proporcionó
+    if (params.imagePath) {
+        news.image = params.imagePath;
+    }
 
     // copy params to news and save
     Object.assign(news, params);

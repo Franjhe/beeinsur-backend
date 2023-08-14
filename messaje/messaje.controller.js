@@ -8,7 +8,7 @@ const messajeService = require('./messaje.service');
 
 router.get('/', getAll);
 router.get('/:id', getById);
-router.post('/', createSchema, create);
+router.post('/', create);
 router.patch('/:id', updateSchema, update);
 router.delete('/:id', _delete);
 
@@ -53,7 +53,6 @@ function createSchema(req, res, next) {
         content: Joi.string().valid(Joi.ref('content')).required(),
         author: Joi.string().valid(Joi.ref('author')).required(),
         active: Joi.boolean().valid(Joi.ref('active')).required(),
-
     });
     validateRequest(req, next, schema);
 }
@@ -61,7 +60,8 @@ function createSchema(req, res, next) {
 function updateSchema(req, res, next) {
     const schema = Joi.object({
         content: Joi.string().empty(''),
+        author: Joi.string().empty(''),
         active: Joi.boolean().empty(''),
-    }).with();
+    });
     validateRequest(req, next, schema);
 }

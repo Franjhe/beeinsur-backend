@@ -8,7 +8,7 @@ const proyectService = require('./proyect.service');
 
 router.get('/', getAll);
 router.get('/:id', getById);
-router.post('/', createSchema, create);
+router.post('/', create);
 router.patch('/:id', updateSchema, update);
 router.delete('/:id', _delete);
 
@@ -48,18 +48,12 @@ function _delete(req, res, next) {
 
 // schema functions
 
-function createSchema(req, res, next) {
-    const schema = Joi.object({
-        description: Joi.string().valid(Joi.ref('description')).required(),
-        ambit: Joi.string().valid(Joi.ref('ambit')).required()
-    });
-    validateRequest(req, next, schema);
-}
-
 function updateSchema(req, res, next) {
     const schema = Joi.object({
         description: Joi.string().empty(''),
+        description_large: Joi.string().empty(''),
+        quantity: Joi.number().empty(''),
         ambit: Joi.string().empty(''),
-    }).with();
+    });
     validateRequest(req, next, schema);
 }

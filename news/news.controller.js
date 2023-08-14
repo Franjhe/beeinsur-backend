@@ -4,6 +4,20 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const newsService = require('./news.service');
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/news/');
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, file.fieldname + '-' + uniqueSuffix + '.jpg');
+    }
+  });
+  
+const upload = multer({ storage: storage });
+
+// Agrega la ruta para cargar imágenes
+router.post('/upload', upload.single('image'), uploadNewsImage);
 // routes
 
 router.get('/', getAll);
@@ -15,6 +29,22 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 // route functions
+
+async function uploadNewsImage(req, res, next) {
+    try {
+      if (!req.file) {
+        throw 'No image uploaded';
+      }
+  
+      // Aquí puedes guardar la ruta de la imagen en la base de datos usando Sequelize
+      const imagePath = req.file.path;
+  
+      res.json({ message: 'Image uploaded successfully', imagePath });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error uploading image' });
+    }
+}
 
 function getAll(req, res, next) {
     newsService.getAll()

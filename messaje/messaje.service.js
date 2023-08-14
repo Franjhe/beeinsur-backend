@@ -18,10 +18,6 @@ async function getById(id) {
 }
 
 async function create(params) {
-    // validate
-    if (await db.Messaje.findOne({ where: { title: params.title } })) {
-        throw 'Title "' + params.title + '" is already registered';
-    }
 
     const messaje = new db.Messaje(params);
 
@@ -33,9 +29,9 @@ async function update(id, params) {
     const messaje = await getMessaje(id);
 
     // validate
-    const contentChanged = params.content && messaje.content !== params.content;
-    if (contentChanged && await db.Messaje.findOne({ where: { content: params.content } })) {
-        throw 'Content "' + params.content + '" is already registered';
+    const contentChanged = params.id && messaje.id !== params.id;
+    if (contentChanged && await db.Messaje.findOne({ where: { id: params.id } })) {
+        throw 'Id "' + params.id + '" is already registered';
     }
 
 

@@ -32,11 +32,6 @@ async function create(params) {
 async function update(id, params) {
     const proyect = await getProyect(id);
 
-    // validate
-    const proyectChanged = params.description && proyect.description !== params.description;
-    if (proyectChanged && await db.Proyect.findOne({ where: { description: params.description } })) {
-        throw 'Description "' + params.description + '" is already registered';
-    }
 
     // copy params to proyect and save
     Object.assign(proyect, params);
