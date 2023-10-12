@@ -4,17 +4,6 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const newsService = require('./news.service');
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/news/');
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      cb(null, file.fieldname + '-' + uniqueSuffix + '.jpg');
-    }
-  });
-  
-const upload = multer({ storage: storage });
 
 // Agrega la ruta para cargar imágenes
 router.post('/upload', upload.single('image'), uploadNewsImage);
