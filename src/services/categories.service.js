@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Categories.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getCategories(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Categories.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Categories = new db.Categories(params);
 
-    // save proyect
-    await proyect.save();
+    // save Categories
+    await Categories.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Categories = await getCategories(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Categories and save
+    Object.assign(Categories, params);
+    await Categories.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Categories = await getCategories(id);
+    await Categories.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getCategories(id) {
+    const Categories = await db.Categories.findByPk(id);
+    if (!Categories) throw 'Categories not found';
+    return Categories;
 }

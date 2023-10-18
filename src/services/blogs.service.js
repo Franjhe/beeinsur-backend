@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Blogs.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getBlogs(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Blogs.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Blogs = new db.Blogs(params);
 
-    // save proyect
-    await proyect.save();
+    // save Blogs
+    await Blogs.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Blogs = await getBlogs(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Blogs and save
+    Object.assign(Blogs, params);
+    await Blogs.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Blogs = await getBlogs(id);
+    await Blogs.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getBlogs(id) {
+    const Blogs = await db.Blogs.findByPk(id);
+    if (!Blogs) throw 'Blogs not found';
+    return Blogs;
 }

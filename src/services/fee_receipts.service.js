@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Fee_receipts.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getFee_receipts(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Fee_receipts.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Fee_receipts = new db.Fee_receipts(params);
 
-    // save proyect
-    await proyect.save();
+    // save Fee_receipts
+    await Fee_receipts.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Fee_receipts = await getFee_receipts(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Fee_receipts and save
+    Object.assign(Fee_receipts, params);
+    await Fee_receipts.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Fee_receipts = await getFee_receipts(id);
+    await Fee_receipts.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getFee_receipts(id) {
+    const Fee_receipts = await db.Fee_receipts.findByPk(id);
+    if (!Fee_receipts) throw 'Fee_receipts not found';
+    return Fee_receipts;
 }

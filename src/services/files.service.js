@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Files.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getFiles(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Files.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Files = new db.Files(params);
 
-    // save proyect
-    await proyect.save();
+    // save Files
+    await Files.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Files = await getFiles(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Files and save
+    Object.assign(Files, params);
+    await Files.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Files = await getFiles(id);
+    await Files.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getFiles(id) {
+    const Files = await db.Files.findByPk(id);
+    if (!Files) throw 'Files not found';
+    return Files;
 }

@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Fee_insurances.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getFee_insurances(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Fee_insurances.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Fee_insurances = new db.Fee_insurances(params);
 
-    // save proyect
-    await proyect.save();
+    // save Fee_insurances
+    await Fee_insurances.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Fee_insurances = await getFee_insurances(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Fee_insurances and save
+    Object.assign(Fee_insurances, params);
+    await Fee_insurances.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Fee_insurances = await getFee_insurances(id);
+    await Fee_insurances.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getFee_insurances(id) {
+    const Fee_insurances = await db.Fee_insurances.findByPk(id);
+    if (!Fee_insurances) throw 'Fee_insurances not found';
+    return Fee_insurances;
 }

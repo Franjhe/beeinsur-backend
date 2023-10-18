@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Status.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getStatus(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Status.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Status = new db.Status(params);
 
-    // save proyect
-    await proyect.save();
+    // save Status
+    await Status.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Status = await getStatus(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Status and save
+    Object.assign(Status, params);
+    await Status.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Status = await getStatus(id);
+    await Status.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getStatus(id) {
+    const Status = await db.Status.findByPk(id);
+    if (!Status) throw 'Status not found';
+    return Status;
 }

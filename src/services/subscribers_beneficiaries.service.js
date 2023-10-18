@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Subscribers_beneficiaries.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getSubscribers_beneficiaries(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Subscribers_beneficiaries.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Subscribers_beneficiaries = new db.Subscribers_beneficiaries(params);
 
-    // save proyect
-    await proyect.save();
+    // save Subscribers_beneficiaries
+    await Subscribers_beneficiaries.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Subscribers_beneficiaries = await getSubscribers_beneficiaries(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Subscribers_beneficiaries and save
+    Object.assign(Subscribers_beneficiaries, params);
+    await Subscribers_beneficiaries.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Subscribers_beneficiaries = await getSubscribers_beneficiaries(id);
+    await Subscribers_beneficiaries.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getSubscribers_beneficiaries(id) {
+    const Subscribers_beneficiaries = await db.Subscribers_beneficiaries.findByPk(id);
+    if (!Subscribers_beneficiaries) throw 'Subscribers_beneficiaries not found';
+    return Subscribers_beneficiaries;
 }

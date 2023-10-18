@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Payment_links.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getPayment_links(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Payment_links.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Payment_links = new db.Payment_links(params);
 
-    // save proyect
-    await proyect.save();
+    // save Payment_links
+    await Payment_links.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Payment_links = await getPayment_links(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Payment_links and save
+    Object.assign(Payment_links, params);
+    await Payment_links.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Payment_links = await getPayment_links(id);
+    await Payment_links.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getPayment_links(id) {
+    const Payment_links = await db.Payment_links.findByPk(id);
+    if (!Payment_links) throw 'Payment_links not found';
+    return Payment_links;
 }

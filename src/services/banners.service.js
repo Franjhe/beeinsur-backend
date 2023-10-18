@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Banners.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getBanners(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Banners.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Banners = new db.Banners(params);
 
-    // save proyect
-    await proyect.save();
+    // save Banners
+    await Banners.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Banners = await getBanners(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Banners and save
+    Object.assign(Banners, params);
+    await Banners.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Banners = await getBanners(id);
+    await Banners.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getBanners(id) {
+    const Banners = await db.Banners.findByPk(id);
+    if (!Banners) throw 'Banners not found';
+    return Banners;
 }

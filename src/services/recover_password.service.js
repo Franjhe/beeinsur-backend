@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Recover_password.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getRecover_password(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Recover_password.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Recover_password = new db.Recover_password(params);
 
-    // save proyect
-    await proyect.save();
+    // save Recover_password
+    await Recover_password.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Recover_password = await getRecover_password(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Recover_password and save
+    Object.assign(Recover_password, params);
+    await Recover_password.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Recover_password = await getRecover_password(id);
+    await Recover_password.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getRecover_password(id) {
+    const Recover_password = await db.Recover_password.findByPk(id);
+    if (!Recover_password) throw 'Recover_password not found';
+    return Recover_password;
 }

@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Users.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getUsers(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Users.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Users = new db.Users(params);
 
-    // save proyect
-    await proyect.save();
+    // save Users
+    await Users.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Users = await getUsers(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Users and save
+    Object.assign(Users, params);
+    await Users.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Users = await getUsers(id);
+    await Users.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getUsers(id) {
+    const Users = await db.Users.findByPk(id);
+    if (!Users) throw 'Users not found';
+    return Users;
 }

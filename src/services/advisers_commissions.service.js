@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Advisers_commissions.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getAdvisers_commissions(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Advisers_commissions.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Advisers_commissions = new db.Advisers_commissions(params);
 
-    // save proyect
-    await proyect.save();
+    // save Advisers_commissions
+    await Advisers_commissions.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Advisers_commissions = await getAdvisers_commissions(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Advisers_commissions and save
+    Object.assign(Advisers_commissions, params);
+    await Advisers_commissions.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Advisers_commissions = await getAdvisers_commissions(id);
+    await Advisers_commissions.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getAdvisers_commissions(id) {
+    const Advisers_commissions = await db.Advisers_commissions.findByPk(id);
+    if (!Advisers_commissions) throw 'Advisers_commissions not found';
+    return Advisers_commissions;
 }

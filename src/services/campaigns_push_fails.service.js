@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Campaigns_push_fails.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getCampaigns_push_fails(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Campaigns_push_fails.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Campaigns_push_fails = new db.Campaigns_push_fails(params);
 
-    // save proyect
-    await proyect.save();
+    // save Campaigns_push_fails
+    await Campaigns_push_fails.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Campaigns_push_fails = await getCampaigns_push_fails(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Campaigns_push_fails and save
+    Object.assign(Campaigns_push_fails, params);
+    await Campaigns_push_fails.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Campaigns_push_fails = await getCampaigns_push_fails(id);
+    await Campaigns_push_fails.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getCampaigns_push_fails(id) {
+    const Campaigns_push_fails = await db.Campaigns_push_fails.findByPk(id);
+    if (!Campaigns_push_fails) throw 'Campaigns_push_fails not found';
+    return Campaigns_push_fails;
 }

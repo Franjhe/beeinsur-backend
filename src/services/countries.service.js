@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Countries.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getCountries(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Countries.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Countries = new db.Countries(params);
 
-    // save proyect
-    await proyect.save();
+    // save Countries
+    await Countries.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Countries = await getCountries(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Countries and save
+    Object.assign(Countries, params);
+    await Countries.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Countries = await getCountries(id);
+    await Countries.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getCountries(id) {
+    const Countries = await db.Countries.findByPk(id);
+    if (!Countries) throw 'Countries not found';
+    return Countries;
 }

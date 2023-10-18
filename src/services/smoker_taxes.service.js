@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Smoker_taxes.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getSmoker_taxes(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Smoker_taxes.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Smoker_taxes = new db.Smoker_taxes(params);
 
-    // save proyect
-    await proyect.save();
+    // save Smoker_taxes
+    await Smoker_taxes.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Smoker_taxes = await getSmoker_taxes(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Smoker_taxes and save
+    Object.assign(Smoker_taxes, params);
+    await Smoker_taxes.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Smoker_taxes = await getSmoker_taxes(id);
+    await Smoker_taxes.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getSmoker_taxes(id) {
+    const Smoker_taxes = await db.Smoker_taxes.findByPk(id);
+    if (!Smoker_taxes) throw 'Smoker_taxes not found';
+    return Smoker_taxes;
 }

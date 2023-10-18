@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Blog_tags.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getBlog_tags(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Blog_tags.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Blog_tags = new db.Blog_tags(params);
 
-    // save proyect
-    await proyect.save();
+    // save Blog_tags
+    await Blog_tags.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Blog_tags = await getBlog_tags(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Blog_tags and save
+    Object.assign(Blog_tags, params);
+    await Blog_tags.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Blog_tags = await getBlog_tags(id);
+    await Blog_tags.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getBlog_tags(id) {
+    const Blog_tags = await db.Blog_tags.findByPk(id);
+    if (!Blog_tags) throw 'Blog_tags not found';
+    return Blog_tags;
 }

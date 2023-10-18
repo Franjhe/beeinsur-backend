@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Exchange_rate.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getExchange_rate(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Exchange_rate.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Exchange_rate = new db.Exchange_rate(params);
 
-    // save proyect
-    await proyect.save();
+    // save Exchange_rate
+    await Exchange_rate.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Exchange_rate = await getExchange_rate(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Exchange_rate and save
+    Object.assign(Exchange_rate, params);
+    await Exchange_rate.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Exchange_rate = await getExchange_rate(id);
+    await Exchange_rate.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getExchange_rate(id) {
+    const Exchange_rate = await db.Exchange_rate.findByPk(id);
+    if (!Exchange_rate) throw 'Exchange_rate not found';
+    return Exchange_rate;
 }

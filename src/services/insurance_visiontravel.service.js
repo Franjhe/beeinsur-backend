@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Insurance_visiontravel.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getInsurance_visiontravel(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Insurance_visiontravel.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Insurance_visiontravel = new db.Insurance_visiontravel(params);
 
-    // save proyect
-    await proyect.save();
+    // save Insurance_visiontravel
+    await Insurance_visiontravel.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Insurance_visiontravel = await getInsurance_visiontravel(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Insurance_visiontravel and save
+    Object.assign(Insurance_visiontravel, params);
+    await Insurance_visiontravel.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Insurance_visiontravel = await getInsurance_visiontravel(id);
+    await Insurance_visiontravel.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getInsurance_visiontravel(id) {
+    const Insurance_visiontravel = await db.Insurance_visiontravel.findByPk(id);
+    if (!Insurance_visiontravel) throw 'Insurance_visiontravel not found';
+    return Insurance_visiontravel;
 }

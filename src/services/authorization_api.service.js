@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Authorization_api.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getAuthorization_api(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Authorization_api.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Authorization_api = new db.Authorization_api(params);
 
-    // save proyect
-    await proyect.save();
+    // save Authorization_api
+    await Authorization_api.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Authorization_api = await getAuthorization_api(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Authorization_api and save
+    Object.assign(Authorization_api, params);
+    await Authorization_api.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Authorization_api = await getAuthorization_api(id);
+    await Authorization_api.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getAuthorization_api(id) {
+    const Authorization_api = await db.Authorization_api.findByPk(id);
+    if (!Authorization_api) throw 'Authorization_api not found';
+    return Authorization_api;
 }

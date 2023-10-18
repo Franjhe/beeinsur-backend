@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Information.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getInformation(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Information.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Information = new db.Information(params);
 
-    // save proyect
-    await proyect.save();
+    // save Information
+    await Information.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Information = await getInformation(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Information and save
+    Object.assign(Information, params);
+    await Information.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Information = await getInformation(id);
+    await Information.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getInformation(id) {
+    const Information = await db.Information.findByPk(id);
+    if (!Information) throw 'Information not found';
+    return Information;
 }

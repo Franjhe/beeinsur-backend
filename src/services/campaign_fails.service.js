@@ -10,43 +10,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Campaign_fails.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getCampaign_fails(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Campaign_fails.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Campaign_fails = new db.Campaign_fails(params);
 
-    // save proyect
-    await proyect.save();
+    // save Campaign_fails
+    await Campaign_fails.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Campaign_fails = await getCampaign_fails(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Campaign_fails and save
+    Object.assign(Campaign_fails, params);
+    await Campaign_fails.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Campaign_fails = await getCampaign_fails(id);
+    await Campaign_fails.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getCampaign_fails(id) {
+    const Campaign_fails = await db.Campaign_fails.findByPk(id);
+    if (!Campaign_fails) throw 'Campaign_fails not found';
+    return Campaign_fails;
 }
