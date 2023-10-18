@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const blog_tagService = require('./../services/blog_tags.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    blog_tagService.getAll()
+        .then(blog_tags => res.json(blog_tags))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    blog_tagService.getById(req.params.id)
+        .then(blog_tag => res.json(blog_tag))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    blog_tagService.create(req.body)
+        .then(() => res.json({ message: 'blog_tag created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    blog_tagService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'blog_tag updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    blog_tagService.delete(req.params.id)
+        .then(() => res.json({ message: 'blog_tag deleted' }))
         .catch(next);
 }
 

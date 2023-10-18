@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const price_age_groupService = require('./../services/price_age_groups.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    price_age_groupService.getAll()
+        .then(price_age_groups => res.json(price_age_groups))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    price_age_groupService.getById(req.params.id)
+        .then(price_age_group => res.json(price_age_group))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    price_age_groupService.create(req.body)
+        .then(() => res.json({ message: 'price_age_group created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    price_age_groupService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'price_age_group updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    price_age_groupService.delete(req.params.id)
+        .then(() => res.json({ message: 'price_age_group deleted' }))
         .catch(next);
 }
 

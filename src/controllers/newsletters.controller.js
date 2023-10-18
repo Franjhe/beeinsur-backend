@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const newsletterService = require('./../services/newsletters.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    newsletterService.getAll()
+        .then(newsletters => res.json(newsletters))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    newsletterService.getById(req.params.id)
+        .then(newsletter => res.json(newsletter))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    newsletterService.create(req.body)
+        .then(() => res.json({ message: 'newsletter created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    newsletterService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'newsletter updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    newsletterService.delete(req.params.id)
+        .then(() => res.json({ message: 'newsletter deleted' }))
         .catch(next);
 }
 

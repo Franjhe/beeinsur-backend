@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const smoker_taxeService = require('./../services/smoker_taxes.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    smoker_taxeService.getAll()
+        .then(smoker_taxes => res.json(smoker_taxes))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    smoker_taxeService.getById(req.params.id)
+        .then(smoker_taxe => res.json(smoker_taxe))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    smoker_taxeService.create(req.body)
+        .then(() => res.json({ message: 'smoker_taxe created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    smoker_taxeService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'smoker_taxe updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    smoker_taxeService.delete(req.params.id)
+        .then(() => res.json({ message: 'smoker_taxe deleted' }))
         .catch(next);
 }
 

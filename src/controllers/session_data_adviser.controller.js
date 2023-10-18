@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const session_data_adviserService = require('./../services/session_data_adviser.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    session_data_adviserService.getAll()
+        .then(session_data_advisers => res.json(session_data_advisers))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    session_data_adviserService.getById(req.params.id)
+        .then(session_data_adviser => res.json(session_data_adviser))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    session_data_adviserService.create(req.body)
+        .then(() => res.json({ message: 'session_data_adviser created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    session_data_adviserService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'session_data_adviser updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    session_data_adviserService.delete(req.params.id)
+        .then(() => res.json({ message: 'session_data_adviser deleted' }))
         .catch(next);
 }
 

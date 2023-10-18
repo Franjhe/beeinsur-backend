@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const campaigns_push_failService = require('./../services/campaigns_push_fails.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    campaigns_push_failService.getAll()
+        .then(campaigns_push_fails => res.json(campaigns_push_fails))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    campaigns_push_failService.getById(req.params.id)
+        .then(campaigns_push_fail => res.json(campaigns_push_fail))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    campaigns_push_failService.create(req.body)
+        .then(() => res.json({ message: 'campaigns_push_fail created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    campaigns_push_failService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'campaigns_push_fail updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    campaigns_push_failService.delete(req.params.id)
+        .then(() => res.json({ message: 'campaigns_push_fail deleted' }))
         .catch(next);
 }
 

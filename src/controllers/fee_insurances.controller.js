@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const fee_insuranceService = require('./../services/fee_insurances.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    fee_insuranceService.getAll()
+        .then(fee_insurances => res.json(fee_insurances))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    fee_insuranceService.getById(req.params.id)
+        .then(fee_insurance => res.json(fee_insurance))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    fee_insuranceService.create(req.body)
+        .then(() => res.json({ message: 'fee_insurance created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    fee_insuranceService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'fee_insurance updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    fee_insuranceService.delete(req.params.id)
+        .then(() => res.json({ message: 'fee_insurance deleted' }))
         .catch(next);
 }
 

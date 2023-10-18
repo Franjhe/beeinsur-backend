@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const recover_passwordService = require('./../services/recover_password.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    recover_passwordService.getAll()
+        .then(recover_passwords => res.json(recover_passwords))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    recover_passwordService.getById(req.params.id)
+        .then(recover_password => res.json(recover_password))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    recover_passwordService.create(req.body)
+        .then(() => res.json({ message: 'recover_password created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    recover_passwordService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'recover_password updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    recover_passwordService.delete(req.params.id)
+        .then(() => res.json({ message: 'recover_password deleted' }))
         .catch(next);
 }
 

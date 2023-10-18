@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const insurance_visiontravelService = require('./../services/insurance_visiontravel.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    insurance_visiontravelService.getAll()
+        .then(insurance_visiontravels => res.json(insurance_visiontravels))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    insurance_visiontravelService.getById(req.params.id)
+        .then(insurance_visiontravel => res.json(insurance_visiontravel))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    insurance_visiontravelService.create(req.body)
+        .then(() => res.json({ message: 'insurance_visiontravel created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    insurance_visiontravelService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'insurance_visiontravel updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    insurance_visiontravelService.delete(req.params.id)
+        .then(() => res.json({ message: 'insurance_visiontravel deleted' }))
         .catch(next);
 }
 

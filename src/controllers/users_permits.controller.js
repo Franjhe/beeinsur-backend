@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const users_permitService = require('./../services/users_permits.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    users_permitService.getAll()
+        .then(users_permits => res.json(users_permits))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    users_permitService.getById(req.params.id)
+        .then(users_permit => res.json(users_permit))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    users_permitService.create(req.body)
+        .then(() => res.json({ message: 'users_permit created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    users_permitService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'users_permit updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    users_permitService.delete(req.params.id)
+        .then(() => res.json({ message: 'users_permit deleted' }))
         .catch(next);
 }
 

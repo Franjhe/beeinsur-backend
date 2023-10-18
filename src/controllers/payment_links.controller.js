@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const payment_linkService = require('./../services/payment_links.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    payment_linkService.getAll()
+        .then(payment_links => res.json(payment_links))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    payment_linkService.getById(req.params.id)
+        .then(payment_link => res.json(payment_link))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    payment_linkService.create(req.body)
+        .then(() => res.json({ message: 'payment_link created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    payment_linkService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'payment_link updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    payment_linkService.delete(req.params.id)
+        .then(() => res.json({ message: 'payment_link deleted' }))
         .catch(next);
 }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const fee_receiptService = require('./../services/fee_receipts.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    fee_receiptService.getAll()
+        .then(fee_receipts => res.json(fee_receipts))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    fee_receiptService.getById(req.params.id)
+        .then(fee_receipt => res.json(fee_receipt))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    fee_receiptService.create(req.body)
+        .then(() => res.json({ message: 'fee_receipt created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    fee_receiptService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'fee_receipt updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    fee_receiptService.delete(req.params.id)
+        .then(() => res.json({ message: 'fee_receipt deleted' }))
         .catch(next);
 }
 

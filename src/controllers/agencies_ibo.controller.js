@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const agencies_iboService = require('./../services/agencies_ibo.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    agencies_iboService.getAll()
+        .then(agencies_ibos => res.json(agencies_ibos))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    agencies_iboService.getById(req.params.id)
+        .then(agencies_ibo => res.json(agencies_ibo))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    agencies_iboService.create(req.body)
+        .then(() => res.json({ message: 'agencies_ibo created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    agencies_iboService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'agencies_ibo updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    agencies_iboService.delete(req.params.id)
+        .then(() => res.json({ message: 'agencies_ibo deleted' }))
         .catch(next);
 }
 

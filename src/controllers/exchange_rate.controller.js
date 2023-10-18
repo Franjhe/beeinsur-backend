@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const exchange_rateService = require('./../services/exchange_rate.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    exchange_rateService.getAll()
+        .then(exchange_rates => res.json(exchange_rates))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    exchange_rateService.getById(req.params.id)
+        .then(exchange_rate => res.json(exchange_rate))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    exchange_rateService.create(req.body)
+        .then(() => res.json({ message: 'exchange_rate created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    exchange_rateService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'exchange_rate updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    exchange_rateService.delete(req.params.id)
+        .then(() => res.json({ message: 'exchange_rate deleted' }))
         .catch(next);
 }
 

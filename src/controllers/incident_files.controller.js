@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const incident_filesService = require('./../services/incident_files.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    incident_filesService.getAll()
+        .then(incident_filess => res.json(incident_filess))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    incident_filesService.getById(req.params.id)
+        .then(incident_files => res.json(incident_files))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    incident_filesService.create(req.body)
+        .then(() => res.json({ message: 'incident_files created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    incident_filesService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'incident_files updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    incident_filesService.delete(req.params.id)
+        .then(() => res.json({ message: 'incident_files deleted' }))
         .catch(next);
 }
 

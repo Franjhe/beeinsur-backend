@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const authorization_apiService = require('./../services/authorization_api.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    authorization_apiService.getAll()
+        .then(authorization_apis => res.json(authorization_apis))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    authorization_apiService.getById(req.params.id)
+        .then(authorization_api => res.json(authorization_api))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    authorization_apiService.create(req.body)
+        .then(() => res.json({ message: 'authorization_api created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    authorization_apiService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'authorization_api updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    authorization_apiService.delete(req.params.id)
+        .then(() => res.json({ message: 'authorization_api deleted' }))
         .catch(next);
 }
 

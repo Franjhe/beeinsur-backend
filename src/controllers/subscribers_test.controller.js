@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const subscribers_testService = require('./../services/subscribers_test.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    subscribers_testService.getAll()
+        .then(subscribers_tests => res.json(subscribers_tests))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    subscribers_testService.getById(req.params.id)
+        .then(subscribers_test => res.json(subscribers_test))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    subscribers_testService.create(req.body)
+        .then(() => res.json({ message: 'subscribers_test created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    subscribers_testService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'subscribers_test updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    subscribers_testService.delete(req.params.id)
+        .then(() => res.json({ message: 'subscribers_test deleted' }))
         .catch(next);
 }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const downloadable_fileService = require('./../services/downloadable_files.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    downloadable_fileService.getAll()
+        .then(downloadable_files => res.json(downloadable_files))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    downloadable_fileService.getById(req.params.id)
+        .then(downloadable_file => res.json(downloadable_file))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    downloadable_fileService.create(req.body)
+        .then(() => res.json({ message: 'downloadable_file created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    downloadable_fileService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'downloadable_file updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    downloadable_fileService.delete(req.params.id)
+        .then(() => res.json({ message: 'downloadable_file deleted' }))
         .catch(next);
 }
 

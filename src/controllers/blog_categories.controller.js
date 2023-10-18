@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/proyect.service');
+const blog_categorieService = require('./../services/blog_categories.service');
 
 // routes
 
@@ -17,32 +17,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    blog_categorieService.getAll()
+        .then(blog_categories => res.json(blog_categories))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    blog_categorieService.getById(req.params.id)
+        .then(blog_categorie => res.json(blog_categorie))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    blog_categorieService.create(req.body)
+        .then(() => res.json({ message: 'blog_categorie created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    blog_categorieService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'blog_categorie updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    blog_categorieService.delete(req.params.id)
+        .then(() => res.json({ message: 'blog_categorie deleted' }))
         .catch(next);
 }
 
