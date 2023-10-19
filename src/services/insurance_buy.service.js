@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
-const db = require('_helpers/db');
+const db = require('./../_helpers/db');
+
 
 module.exports = {
     getAll,
@@ -10,43 +11,43 @@ module.exports = {
 };
 
 async function getAll() {
-    return await db.Proyect.findAll();
+    return await db.Insurance_buy.findAll();
 }
 
 async function getById(id) {
-    return await getProyect(id);
+    return await getInsurance_buy(id);
 }
 
 async function create(params) {
     // validate
-    if (await db.Proyect.findOne({ where: { description: params.description } })) {
+    if (await db.Insurance_buy.findOne({ where: { description: params.description } })) {
         throw 'Description "' + params.description + '" is already registered';
     }
 
-    const proyect = new db.Proyect(params);
+    const Insurance_buy = new db.Insurance_buy(params);
 
-    // save proyect
-    await proyect.save();
+    // save Insurance_buy
+    await Insurance_buy.save();
 }
 
 async function update(id, params) {
-    const proyect = await getProyect(id);
+    const Insurance_buy = await getInsurance_buy(id);
 
 
-    // copy params to proyect and save
-    Object.assign(proyect, params);
-    await proyect.save();
+    // copy params to Insurance_buy and save
+    Object.assign(Insurance_buy, params);
+    await Insurance_buy.save();
 }
 
 async function _delete(id) {
-    const proyect = await getProyect(id);
-    await proyect.destroy();
+    const Insurance_buy = await getInsurance_buy(id);
+    await Insurance_buy.destroy();
 }
 
 // helper functions
 
-async function getProyect(id) {
-    const proyect = await db.Proyect.findByPk(id);
-    if (!proyect) throw 'Proyect not found';
-    return proyect;
+async function getInsurance_buy(id) {
+    const Insurance_buy = await db.Insurance_buy.findByPk(id);
+    if (!Insurance_buy) throw 'Insurance_buy not found';
+    return Insurance_buy;
 }

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
+const validateRequest = require('../_middleware/validate-request');
+
 const blogService = require('./../services/blogs.service');
 
 // routes

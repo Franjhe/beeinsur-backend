@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
-const proyectService = require('./../services/');
+const validateRequest = require('../_middleware/validate-request');
+
+const userService = require('./../services/users.service');
 
 // routes
 
@@ -17,32 +18,32 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    proyectService.getAll()
-        .then(proyects => res.json(proyects))
+    userService.getAll()
+        .then(users => res.json(users))
         .catch(next);
 }
 
 function getById(req, res, next) {
-    proyectService.getById(req.params.id)
-        .then(proyect => res.json(proyect))
+    userService.getById(req.params.id)
+        .then(user => res.json(user))
         .catch(next);
 }
 
 function create(req, res, next) {
-    proyectService.create(req.body)
-        .then(() => res.json({ message: 'Proyect created' }))
+    userService.create(req.body)
+        .then(() => res.json({ message: 'user created' }))
         .catch(next);
 }
 
 function update(req, res, next) {
-    proyectService.update(req.params.id, req.body)
-        .then(() => res.json({ message: 'Proyect updated' }))
+    userService.update(req.params.id, req.body)
+        .then(() => res.json({ message: 'user updated' }))
         .catch(next);
 }
 
 function _delete(req, res, next) {
-    proyectService.delete(req.params.id)
-        .then(() => res.json({ message: 'Proyect deleted' }))
+    userService.delete(req.params.id)
+        .then(() => res.json({ message: 'user deleted' }))
         .catch(next);
 }
 

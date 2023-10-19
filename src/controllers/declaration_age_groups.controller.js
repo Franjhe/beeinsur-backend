@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
+const validateRequest = require('../_middleware/validate-request');
+
 const declaration_age_groupService = require('./../services/declaration_age_groups.service');
 
 // routes
