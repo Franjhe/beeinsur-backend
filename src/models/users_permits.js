@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_permit: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_profile: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_profile",
-      references: {
-        key: "id_profile",
-        model: "profiles_model"
-      }
+      // references: {
+      //   key: "id_profile",
+      //   model: "profiles_model"
+      // }
     },
     name_module: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     name_core: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_fee: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -14,7 +14,7 @@ module.exports = sequelize => {
     },
     id_insurance: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

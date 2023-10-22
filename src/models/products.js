@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_product: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_insurance: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_insurance",
-      references: {
-        key: "id_insurance",
-        model: "insurances_model"
-      }
+      // references: {
+      //   key: "id_insurance",
+      //   model: "insurances_model"
+      // }
     },
     name_product: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     description_product: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -45,7 +45,7 @@ module.exports = sequelize => {
     },
     description_product_en: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -54,7 +54,7 @@ module.exports = sequelize => {
     },
     preview: {
       type: DataTypes.STRING(320),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -63,7 +63,7 @@ module.exports = sequelize => {
     },
     preview_en: {
       type: DataTypes.STRING(320),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -72,7 +72,7 @@ module.exports = sequelize => {
     },
     price_product: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -81,7 +81,7 @@ module.exports = sequelize => {
     },
     image_product: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -90,7 +90,7 @@ module.exports = sequelize => {
     },
     percentage_agencies_master: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -99,7 +99,7 @@ module.exports = sequelize => {
     },
     percentage_super_agency: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -108,7 +108,7 @@ module.exports = sequelize => {
     },
     percentage_advisers: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -117,7 +117,7 @@ module.exports = sequelize => {
     },
     option_web: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
@@ -126,33 +126,33 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "2",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_status",
-      references: {
-        key: "id_status",
-        model: "status_model"
-      }
+      // references: {
+      //   key: "id_status",
+      //   model: "status_model"
+      // }
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_user",
-      references: {
-        key: "id_user",
-        model: "users_model"
-      }
+      // references: {
+      //   key: "id_user",
+      //   model: "users_model"
+      // }
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

@@ -3,7 +3,7 @@
         "host": "localhost",
         "port": 3306,
         "user": "root",
-        "password": "",
+        "password": "root",
         "database": "beeinsur_beecms",
         "jwt_secret": "pk4yckKpD4&a6oEpX^48Mn$c!0Ps18%dEn8Qk5O9BCq3if!jmv"
     }

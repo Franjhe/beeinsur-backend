@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_link: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     token_link: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -41,7 +41,7 @@ module.exports = sequelize => {
     },
     token_encrypt: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "9",
       primaryKey: false,
       autoIncrement: false,
@@ -77,7 +77,7 @@ module.exports = sequelize => {
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_buy_temp: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = sequelize => {
     },
     id_insurance: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     total_buy: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
@@ -86,7 +86,7 @@ module.exports = sequelize => {
     },
     user_id: {
       type: DataTypes.STRING(20),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -95,7 +95,7 @@ module.exports = sequelize => {
     },
     name_user: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -104,7 +104,7 @@ module.exports = sequelize => {
     },
     last_name_user: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -113,7 +113,7 @@ module.exports = sequelize => {
     },
     sex_user: {
       type: DataTypes.STRING(1),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -122,7 +122,7 @@ module.exports = sequelize => {
     },
     date_birth: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -131,7 +131,7 @@ module.exports = sequelize => {
     },
     age_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -140,7 +140,7 @@ module.exports = sequelize => {
     },
     smokes_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -149,7 +149,7 @@ module.exports = sequelize => {
     },
     id_country: {
       type: DataTypes.STRING(2),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -158,7 +158,7 @@ module.exports = sequelize => {
     },
     email_user: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -167,7 +167,7 @@ module.exports = sequelize => {
     },
     phone_user: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -176,7 +176,7 @@ module.exports = sequelize => {
     },
     beneficiaries_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -185,7 +185,7 @@ module.exports = sequelize => {
     },
     id_price: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -247,7 +247,7 @@ module.exports = sequelize => {
       field: "model_car"
     },
     year_car: {
-      type: year(4),
+      type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
@@ -266,7 +266,7 @@ module.exports = sequelize => {
     },
     option_extension: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
@@ -275,7 +275,7 @@ module.exports = sequelize => {
     },
     cant_husbands: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
@@ -284,7 +284,7 @@ module.exports = sequelize => {
     },
     cant_sons: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
@@ -293,7 +293,7 @@ module.exports = sequelize => {
     },
     cant_fathers: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
@@ -302,7 +302,7 @@ module.exports = sequelize => {
     },
     cant_spouse: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
@@ -311,7 +311,7 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -329,7 +329,7 @@ module.exports = sequelize => {
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

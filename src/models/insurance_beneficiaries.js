@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_beneficiary: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_buy: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_buy",
-      references: {
-        key: "id_buy",
-        model: "insurance_buy_model"
-      }
+      // references: {
+      //   key: "id_buy",
+      //   model: "insurance_buy_model"
+      // }
     },
     identification: {
       type: DataTypes.STRING(20),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     name_beneficiary: {
       type: DataTypes.STRING(150),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -45,7 +45,7 @@ module.exports = sequelize => {
     },
     percentage_beneficiary: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -54,7 +54,7 @@ module.exports = sequelize => {
     },
     id_relationship: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

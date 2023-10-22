@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_subscriber: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     email_subscriber: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -41,7 +41,7 @@ module.exports = sequelize => {
     },
     name_subscriber: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     surname_subscriber: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -59,7 +59,7 @@ module.exports = sequelize => {
     },
     phones_subscriber: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -68,7 +68,7 @@ module.exports = sequelize => {
     },
     date_birth: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -77,7 +77,7 @@ module.exports = sequelize => {
     },
     date_issue: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -86,7 +86,7 @@ module.exports = sequelize => {
     },
     date_start: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -95,7 +95,7 @@ module.exports = sequelize => {
     },
     date_expiration: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -113,7 +113,7 @@ module.exports = sequelize => {
     },
     identification_subscriber: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -131,7 +131,7 @@ module.exports = sequelize => {
     },
     destination_subscriber: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -140,7 +140,7 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -149,7 +149,7 @@ module.exports = sequelize => {
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -158,7 +158,7 @@ module.exports = sequelize => {
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

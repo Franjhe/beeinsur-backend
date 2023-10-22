@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_payment_temp: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -23,7 +23,7 @@ module.exports = sequelize => {
     },
     id_term: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     amount_term: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -68,7 +68,7 @@ module.exports = sequelize => {
     },
     sub_total_payment: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -77,7 +77,7 @@ module.exports = sequelize => {
     },
     total_payment: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -86,7 +86,7 @@ module.exports = sequelize => {
     },
     total_payment_bs: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0.00",
       primaryKey: false,
       autoIncrement: false,
@@ -113,7 +113,7 @@ module.exports = sequelize => {
     },
     discount: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

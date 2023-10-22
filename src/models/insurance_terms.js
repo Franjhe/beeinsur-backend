@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_term: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,16 +14,16 @@ module.exports = sequelize => {
     },
     id_price: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_price",
-      references: {
-        key: "id_price",
-        model: "insurance_prices_model"
-      }
+      // references: {
+      //   key: "id_price",
+      //   model: "insurance_prices_model"
+      // }
     },
     id_country: {
       type: DataTypes.STRING(3),
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     description_term: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -45,7 +45,7 @@ module.exports = sequelize => {
     },
     html_term: {
       type: DataTypes.STRING(150),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -54,7 +54,7 @@ module.exports = sequelize => {
     },
     config_term: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -63,7 +63,7 @@ module.exports = sequelize => {
     },
     amount_term: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -72,33 +72,33 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_status",
-      references: {
-        key: "id_status",
-        model: "status_model"
-      }
+      // references: {
+      //   key: "id_status",
+      //   model: "status_model"
+      // }
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_user",
-      references: {
-        key: "id_user",
-        model: "users_model"
-      }
+      // references: {
+      //   key: "id_user",
+      //   model: "users_model"
+      // }
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

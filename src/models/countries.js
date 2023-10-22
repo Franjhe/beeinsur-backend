@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_country: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     name_country2: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -41,7 +41,7 @@ module.exports = sequelize => {
     },
     phone_code: {
       type: DataTypes.STRING(6),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
@@ -59,7 +59,7 @@ module.exports = sequelize => {
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,

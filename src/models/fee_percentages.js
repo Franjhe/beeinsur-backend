@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_percentage: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_fee: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_fee",
-      references: {
-        key: "id_fee",
-        model: "fees_model"
-      }
+      // references: {
+      //   key: "id_fee",
+      //   model: "fees_model"
+      // }
     },
     percentage: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     fee_initial: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

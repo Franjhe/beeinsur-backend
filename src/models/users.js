@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = sequelize => {
     },
     user_name: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -23,7 +23,7 @@ module.exports = sequelize => {
     },
     email_user: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     avatar_img: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "avatar.png",
       primaryKey: false,
       autoIncrement: false,
@@ -41,7 +41,7 @@ module.exports = sequelize => {
     },
     systems_name: {
       type: DataTypes.STRING(30),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     user_pass: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -77,29 +77,29 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_status",
-      references: {
-        key: "id_status",
-        model: "status_model"
-      }
+      // references: {
+      //   key: "id_status",
+      //   model: "status_model"
+      // }
     },
     id_profile: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_profile",
-      references: {
-        key: "id_profile",
-        model: "profiles_model"
-      }
+      // references: {
+      //   key: "id_profile",
+      //   model: "profiles_model"
+      // }
     }
   };
   const options = {

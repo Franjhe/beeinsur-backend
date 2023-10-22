@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_adviser: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,16 +14,16 @@ module.exports = sequelize => {
     },
     id_agency: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_agency",
-      references: {
-        key: "id_agency",
-        model: "agencies_model"
-      }
+      // references: {
+      //   key: "id_agency",
+      //   model: "agencies_model"
+      // }
     },
     code_ibo: {
       type: DataTypes.INTEGER(11),
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     name_adviser: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -45,7 +45,7 @@ module.exports = sequelize => {
     },
     surname_adviser: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -54,7 +54,7 @@ module.exports = sequelize => {
     },
     email_adviser: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -63,20 +63,20 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_status",
-      references: {
-        key: "id_status",
-        model: "status_model"
-      }
+      // references: {
+      //   key: "id_status",
+      //   model: "status_model"
+      // }
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -85,7 +85,7 @@ module.exports = sequelize => {
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

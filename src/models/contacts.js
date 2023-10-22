@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     phone_contact: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -14,7 +14,7 @@ module.exports = sequelize => {
     },
     email_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -23,7 +23,7 @@ module.exports = sequelize => {
     },
     address_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     map_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -41,7 +41,7 @@ module.exports = sequelize => {
     },
     facebook_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -50,7 +50,7 @@ module.exports = sequelize => {
     },
     instagram_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -59,7 +59,7 @@ module.exports = sequelize => {
     },
     twitter_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -68,7 +68,7 @@ module.exports = sequelize => {
     },
     whatsapp_contact: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -77,7 +77,7 @@ module.exports = sequelize => {
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,
@@ -86,7 +86,7 @@ module.exports = sequelize => {
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -95,7 +95,7 @@ module.exports = sequelize => {
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

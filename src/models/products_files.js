@@ -5,29 +5,29 @@ module.exports = sequelize => {
   const attributes = {
     id_product: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_product",
-      references: {
-        key: "id_product",
-        model: "products_model"
-      }
+      // references: {
+      //   key: "id_product",
+      //   model: "products_model"
+      // }
     },
     id_file: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_file",
-      references: {
-        key: "id_file",
-        model: "downloadable_files_model"
-      }
+      // references: {
+      //   key: "id_file",
+      //   model: "downloadable_files_model"
+      // }
     }
   };
   const options = {

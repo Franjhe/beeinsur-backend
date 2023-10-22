@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_fail: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_detail: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_detail",
-      references: {
-        key: "id_detail",
-        model: "campaigns_push_details_model"
-      }
+      // references: {
+      //   key: "id_detail",
+      //   model: "campaigns_push_details_model"
+      // }
     },
     id_subscriber: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,20 +36,20 @@ module.exports = sequelize => {
     },
     id_list: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_list",
-      references: {
-        key: "id_list",
-        model: "lists_model"
-      }
+      // references: {
+      //   key: "id_list",
+      //   model: "lists_model"
+      // }
     },
     date_send: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -64,14 +64,14 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "id_user",
-      references: {
-        key: "id_user",
-        model: "users_model"
-      }
+      // references: {
+      //   key: "id_user",
+      //   model: "users_model"
+      // }
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

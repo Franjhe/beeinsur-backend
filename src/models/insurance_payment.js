@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_payment: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -20,10 +20,10 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "id_buy",
-      references: {
-        key: "id_buy",
-        model: "insurance_buy_model"
-      }
+      // references: {
+      //   key: "id_buy",
+      //   model: "insurance_buy_model"
+      // }
     },
     id_transaction: {
       type: DataTypes.INTEGER(11),
@@ -33,27 +33,27 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "id_transaction",
-      references: {
-        key: "id_transaction",
-        model: "payment_transactions_model"
-      }
+      // references: {
+      //   key: "id_transaction",
+      //   model: "payment_transactions_model"
+      // }
     },
     id_term: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_term",
-      references: {
-        key: "id_term",
-        model: "insurance_terms_model"
-      }
+      // references: {
+      //   key: "id_term",
+      //   model: "insurance_terms_model"
+      // }
     },
     amount_term: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -68,10 +68,10 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "id_coupon",
-      references: {
-        key: "id_coupon",
-        model: "insurance_coupons_model"
-      }
+      // references: {
+      //   key: "id_coupon",
+      //   model: "insurance_coupons_model"
+      // }
     },
     type_coupon: {
       type: DataTypes.INTEGER(11),
@@ -93,7 +93,7 @@ module.exports = sequelize => {
     },
     sub_total_payment: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -102,7 +102,7 @@ module.exports = sequelize => {
     },
     total_payment: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -111,7 +111,7 @@ module.exports = sequelize => {
     },
     total_payment_bs: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0.00",
       primaryKey: false,
       autoIncrement: false,
@@ -138,7 +138,7 @@ module.exports = sequelize => {
     },
     discount: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

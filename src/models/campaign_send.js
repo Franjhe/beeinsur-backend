@@ -5,20 +5,20 @@ module.exports = sequelize => {
   const attributes = {
     id_campaign: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_campaign",
-      references: {
-        key: "id_campaign",
-        model: "campaigns_model"
-      }
+      // references: {
+      //   key: "id_campaign",
+      //   model: "campaigns_model"
+      // }
     },
     id_subscriber: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -27,20 +27,20 @@ module.exports = sequelize => {
     },
     id_list: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_list",
-      references: {
-        key: "id_list",
-        model: "lists_model"
-      }
+      // references: {
+      //   key: "id_list",
+      //   model: "lists_model"
+      // }
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

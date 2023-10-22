@@ -5,33 +5,33 @@ module.exports = sequelize => {
   const attributes = {
     id_buy: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_buy",
-      references: {
-        key: "id_buy",
-        model: "insurance_buy_model"
-      }
+      // references: {
+      //   key: "id_buy",
+      //   model: "insurance_buy_model"
+      // }
     },
     id_declaration_health: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_declaration_health",
-      references: {
-        key: "id_declaration_health",
-        model: "declaration_health_model"
-      }
+      // references: {
+      //   key: "id_declaration_health",
+      //   model: "declaration_health_model"
+      // }
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -40,7 +40,7 @@ module.exports = sequelize => {
     },
     option_select: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "1",
       primaryKey: false,
       autoIncrement: false,

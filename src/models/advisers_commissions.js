@@ -5,33 +5,33 @@ module.exports = sequelize => {
   const attributes = {
     id_adviser: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_adviser",
-      references: {
-        key: "id_adviser",
-        model: "advisers_model"
-      }
+      // references: {
+      //   key: "id_adviser",
+      //   model: "advisers_model"
+      // }
     },
     id_product: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_product",
-      references: {
-        key: "id_product",
-        model: "products_model"
-      }
+      // references: {
+      //   key: "id_product",
+      //   model: "products_model"
+      // }
     },
     commission: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

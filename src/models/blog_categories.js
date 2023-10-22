@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_category: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -14,16 +14,16 @@ module.exports = sequelize => {
     },
     id_blog: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_blog",
-      references: {
-        key: "id_blog",
-        model: "blogs_model"
-      }
+      // references: {
+      //   key: "id_blog",
+      //   model: "blogs_model"
+      // }
     }
   };
   const options = {

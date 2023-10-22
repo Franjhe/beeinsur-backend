@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_smoker_tax: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_insurance: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_insurance",
-      references: {
-        key: "id_insurance",
-        model: "insurances_model"
-      }
+      // references: {
+      //   key: "id_insurance",
+      //   model: "insurances_model"
+      // }
     },
     type_tax: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     amount_tax: {
       type: DataTypes.DOUBLE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -45,33 +45,33 @@ module.exports = sequelize => {
     },
     id_user: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_user",
-      references: {
-        key: "id_user",
-        model: "users_model"
-      }
+      // references: {
+      //   key: "id_user",
+      //   model: "users_model"
+      // }
     },
     id_status: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_status",
-      references: {
-        key: "id_status",
-        model: "status_model"
-      }
+      // references: {
+      //   key: "id_status",
+      //   model: "status_model"
+      // }
     },
     create_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

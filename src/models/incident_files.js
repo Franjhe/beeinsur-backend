@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_file_incident: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: true,
       autoIncrement: true,
@@ -14,20 +14,20 @@ module.exports = sequelize => {
     },
     id_incident: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_incident",
-      references: {
-        key: "id_incident",
-        model: "incident_service_model"
-      }
+      // references: {
+      //   key: "id_incident",
+      //   model: "incident_service_model"
+      // }
     },
     name_file: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -36,7 +36,7 @@ module.exports = sequelize => {
     },
     extension_file: {
       type: DataTypes.STRING(5),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,

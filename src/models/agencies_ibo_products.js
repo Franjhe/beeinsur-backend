@@ -5,7 +5,7 @@ module.exports = sequelize => {
   const attributes = {
     id_insurance: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -14,16 +14,16 @@ module.exports = sequelize => {
     },
     id_agency_ibo: {
       type: DataTypes.INTEGER(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "id_agency_ibo",
-      references: {
-        key: "id_agency_ibo",
-        model: "agencies_ibo_model"
-      }
+      // references: {
+      //   key: "id_agency_ibo",
+      //   model: "agencies_ibo_model"
+      // }
     }
   };
   const options = {
