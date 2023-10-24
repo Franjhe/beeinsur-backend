@@ -31,7 +31,7 @@ async function initialize() {
     db.Blog_categories = require('../models/blog_categories')(sequelize);
     db.Blog_tags = require('../models/blog_tags')(sequelize);
     //db.Blogs = require('../models/blogs')(sequelize);
-    db.Campaign_fails = require('../models/campaign_fails')(sequelize);
+    // db.Campaign_fails = require('../models/campaign_fails')(sequelize);
     db.Campaign_lists = require('../models/campaign_lists')(sequelize);
     db.Campaign_send = require('../models/campaign_send')(sequelize);
     //db.Campaigns = require('../models/campaigns')(sequelize);
@@ -60,16 +60,16 @@ async function initialize() {
     db.Incident_service = require('../models/incident_service')(sequelize);
     db.Information = require('../models/information')(sequelize);
     db.Insurance_beneficiaries = require('../models/insurance_beneficiaries')(sequelize);
-    db.Insurance_beneficiaries_temp = require('../models/insurance_beneficiaries_temp')(sequelize);
+    // db.Insurance_beneficiaries_temp = require('../models/insurance_beneficiaries_temp')(sequelize);
     db.Insurance_buy = require('../models/insurance_buy')(sequelize);
     db.Insurance_buy_declaration = require('../models/insurance_buy_declaration')(sequelize);
-    db.Insurance_buy_declaration_temp = require('../models/insurance_buy_declaration_temp')(sequelize);
-    db.Insurance_buy_temp = require('../models/insurance_buy_temp')(sequelize);
+    // db.Insurance_buy_declaration_temp = require('../models/insurance_buy_declaration_temp')(sequelize);
+    // db.Insurance_buy_temp = require('../models/insurance_buy_temp')(sequelize);
     db.Insurance_coupons = require('../models/insurance_coupons')(sequelize);
     db.Insurance_declaration_health = require('../models/insurance_declaration_health')(sequelize);
     db.Insurance_declaration_pathology = require('../models/insurance_declaration_pathology')(sequelize);
     db.Insurance_payment = require('../models/insurance_payment')(sequelize);
-    db.Insurance_payment_temp = require('../models/insurance_payment_temp')(sequelize);
+    // db.Insurance_payment_temp = require('../models/insurance_payment_temp')(sequelize);
     db.Insurance_prices = require('../models/insurance_prices')(sequelize);
     db.Insurance_terms = require('../models/insurance_terms')(sequelize);
     db.Insurance_visiontravel = require('../models/insurance_visiontravel')(sequelize);
@@ -99,6 +99,7 @@ async function initialize() {
     db.To_send = require('../models/to_send')(sequelize);
     db.Users = require('../models/users')(sequelize);
     db.Users_permits = require('../models/users_permits')(sequelize);
+    db.Semenu = require('../models/semenu')(sequelize);
 
     // sync all models with database
     await sequelize.sync({ alter: true });
